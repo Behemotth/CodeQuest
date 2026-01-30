@@ -70,3 +70,10 @@ textarea {
   background: #fff;
   border-radius: 8px;
 }
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}

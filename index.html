@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="css/style.css" />
 
   <script defer src="js/data/lessons.js"></script>
-  <script defer src="js/engine/ui.js"></script>
   <script defer src="js/engine/validator.js"></script>
   <script defer src="js/engine/progress.js"></script>
   <script defer src="js/engine/preview.js"></script>
@@ -34,48 +33,33 @@
   <main>
     <section id="map"></section>
     <section id="lesson"></section>
-<section id="editor" class="active">
+<section id="editor" class="view">
   <div class="card">
     <h2>Editor de Código</h2>
-    <p>
-      Escreva seu código abaixo e veja o resultado imediatamente.
-      Teste, erre, ajuste — é assim que se aprende.
-    </p>
+    <p>Escreva código e veja o resultado em tempo real.</p>
   </div>
 
   <div class="editor-grid">
-
     <div class="editor-panel">
       <h3>HTML</h3>
-      <textarea id="htmlInput">
-<h1>Olá, CodeQuest</h1>
-<p>Aprender programar é uma jornada.</p>
-      </textarea>
+      <textarea id="htmlInput"></textarea>
 
       <h3>CSS</h3>
-      <textarea id="cssInput">
-body {
-  font-family: Arial;
-  background: #111;
-  color: #0f0;
-}
-      </textarea>
+      <textarea id="cssInput"></textarea>
 
       <h3>JavaScript</h3>
-      <textarea id="jsInput">
-console.log("Editor ativo");
-      </textarea>
+      <textarea id="jsInput"></textarea>
 
-      <button id="runCode">Executar Código</button>
+      <button id="runCode">Executar</button>
     </div>
 
     <div class="preview-panel">
-      <h3>Preview ao Vivo</h3>
+      <h3>Preview</h3>
       <iframe id="preview"></iframe>
     </div>
-
   </div>
 </section>
+
     <section id="progress"></section>
   </main>
 

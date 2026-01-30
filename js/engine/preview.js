@@ -1,37 +1,46 @@
-const htmlInput = document.getElementById("htmlInput");
-const cssInput  = document.getElementById("cssInput");
-const jsInput   = document.getElementById("jsInput");
-const preview   = document.getElementById("preview");
-const runBtn    = document.getElementById("runCode");
+let htmlInput, cssInput, jsInput, preview, runBtn;
+
+function initEditor() {
+  htmlInput = document.getElementById("htmlInput");
+  cssInput  = document.getElementById("cssInput");
+  jsInput   = document.getElementById("jsInput");
+  preview   = document.getElementById("preview");
+  runBtn    = document.getElementById("runCode");
+
+  if (!htmlInput || !cssInput || !jsInput || !preview || !runBtn) {
+    console.warn("Editor ainda não disponível");
+    return;
+  }
+
+  htmlInput.value = "<h1>Olá, CodeQuest</h1>";
+  cssInput.value  = "body { background:#111; color:#0f0; }";
+  jsInput.value   = "console.log('Editor pronto');";
+
+  runBtn.onclick = updatePreview;
+
+  [htmlInput, cssInput, jsInput].forEach(el =>
+    el.addEventListener("input", updatePreview)
+  );
+
+  updatePreview();
+}
 
 function updatePreview() {
-  const html = htmlInput.value;
-  const css  = `<style>${cssInput.value}</style>`;
-  const js   = `<script>${jsInput.value}<\/script>`;
-
-  const fullCode = `
+  const code = `
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-${css}
+<style>${cssInput.value}</style>
 </head>
 <body>
-${html}
-${js}
+${htmlInput.value}
+<script>${jsInput.value}<\/script>
 </body>
 </html>
   `;
-
-  preview.srcdoc = fullCode;
+  preview.srcdoc = code;
 }
 
-runBtn.addEventListener("click", updatePreview);
-
-// Atualização automática (modo aprendizado)
-[htmlInput, cssInput, jsInput].forEach(area => {
-  area.addEventListener("input", updatePreview);
-});
-
-// Render inicial
-updatePreview();
+// Inicializa SOMENTE quando o editor for aberto
+document.addEventListener("editor:open", initEditor);
