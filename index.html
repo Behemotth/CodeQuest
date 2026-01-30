@@ -1,64 +1,301 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Plataforma Hacker - Deep Web">
-    <meta name="author" content="Seu Nome">
-    <meta name="keywords" content="Deep Web, Hacker, Tor, Anonimato, Privacidade">
-    <title>Plataforma Hacker - Deep Web</title>
-    <link rel="stylesheet" href="assets/styles/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <title>Terminal Simulado - Deep Web</title>
+    <style>
+        /* CSS Interno */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1e1e1e;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: white;
+            opacity: 1;
+            transition: opacity 2s;
+        }
+
+        #mainScreen {
+            display: none;
+            padding: 20px;
+            background-color: #333;
+            min-height: 100vh;
+        }
+
+        .fadeIn {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        #console {
+            background-color: #111;
+            padding: 20px;
+            border-radius: 5px;
+            height: 80vh;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            font-size: 16px;
+        }
+
+        #userInput {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            background-color: #222;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .command {
+            color: #00ff00;
+        }
+
+        .output {
+            color: #00c4cc;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .system {
+            color: #ffcc00;
+        }
+
+        /* Minigame Styles */
+        #minigameScreen {
+            display: none;
+            background-color: #444;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #backToTerminal {
+            display: none;
+            padding: 10px 20px;
+            background-color: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #backToTerminal:hover {
+            background-color: #777;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #00c4cc;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #009999;
+        }
+
+        .history {
+            font-size: 14px;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        .history span {
+            display: block;
+            padding: 5px;
+            border-bottom: 1px dashed #444;
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Tela de Carregamento -->
-    <div id="loadingScreen" class="loading-screen">
-        <h1>Conectando-se à Deep Web...</h1>
-        <p id="loadingText">Iniciando protocolo de acesso...</p>
-        <div class="loading-bar"></div>
+    <div id="loadingScreen">
+        Carregando...
     </div>
 
-    <!-- Tela Hacker -->
-    <div id="mainScreen" class="main-screen">
-        <div class="terminal">
-            <div class="header">
-                <h2>Plataforma Hacker</h2>
-            </div>
-
-            <div class="terminal-content">
-                <div id="console" class="console"></div>
-                <input id="userInput" type="text" placeholder="Digite um comando..." autofocus>
-            </div>
-        </div>
-
-        <!-- Navegação -->
-        <nav>
-            <ul>
-                <li><a href="#introducao">Introdução</a></li>
-                <li><a href="#o-que-e">O que é a Deep Web?</a></li>
-                <li><a href="#minigame" id="minigameLink">Minigame</a></li>
-                <li><a href="#riscos">Riscos e Segurança</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-
-        <footer>
-            <p>&copy; 2026 Deep Web Hacker Platform | Todos os direitos reservados.</p>
-        </footer>
+    <div id="mainScreen">
+        <div id="console"></div>
+        <input type="text" id="userInput" placeholder="Digite um comando..." />
+        <div id="commandHistory" class="history"></div>
     </div>
 
-    <!-- Minigame -->
-    <div id="minigameScreen" class="minigame-screen" style="display:none;">
-        <h2>Minigame: Cracke a Senha</h2>
-        <p>Seu objetivo é adivinhar a senha secreta do sistema para avançar. Tente agora!</p>
-        <input type="text" id="passwordInput" placeholder="Digite a senha">
-        <button id="submitPassword">Submeter</button>
+    <div id="minigameScreen">
+        <h2>Minigame: Acesso ao Sistema</h2>
+        <input type="password" id="passwordInput" placeholder="Digite a senha..." />
+        <button id="submitPassword" class="button">Submeter Senha</button>
         <p id="gameMessage"></p>
-        <button id="backToTerminal" style="display:none;">Voltar ao Terminal</button>
+        <button id="backToTerminal" class="button">Voltar ao Terminal</button>
     </div>
 
-    <script src="assets/js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let loadingScreen = document.getElementById("loadingScreen");
+            let mainScreen = document.getElementById("mainScreen");
+            let consoleElement = document.getElementById("console");
+            let userInput = document.getElementById("userInput");
+            let minigameScreen = document.getElementById("minigameScreen");
+            let passwordInput = document.getElementById("passwordInput");
+            let submitPasswordButton = document.getElementById("submitPassword");
+            let gameMessage = document.getElementById("gameMessage");
+            let backToTerminalButton = document.getElementById("backToTerminal");
+            let commandHistory = document.getElementById("commandHistory");
+
+            let environment = {
+                user: "guest",
+                directories: ["/Tor", "/Hidden Services", "/Encrypted"],
+                currentDir: "/",
+                connected: false,
+                history: [],
+                files: {
+                    "/Tor": ["intro.txt", "links.md"],
+                    "/Hidden Services": ["service_list.txt", "hidden.txt"],
+                    "/Encrypted": ["data.bin", "log.txt"]
+                }
+            };
+
+            // Simula o processo de "carregamento" da plataforma
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    mainScreen.style.display = 'block';
+                    mainScreen.classList.add('fadeIn');
+                    simulateCommandLine();
+                }, 2000);
+            }, 4000);
+
+            function simulateCommandLine() {
+                setTimeout(() => {
+                    consoleElement.innerHTML += `<p>Conexão estabelecida com a Deep Web...<span class="blink">_</span></p>`;
+                    userInput.focus();
+                }, 2500);
+            }
+
+            // Função para capturar e processar comandos digitados
+            userInput.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    let command = userInput.value.trim();
+                    processCommand(command);
+                    userInput.value = '';
+                }
+            });
+
+            function processCommand(command) {
+                environment.history.push(command);
+                updateHistory();
+
+                consoleElement.innerHTML += `<p class="command">${environment.user}@deepweb:~${environment.currentDir}$ ${command}</p>`;
+
+                // Comandos
+                if (command === "help") {
+                    consoleElement.innerHTML += `<p class="output">Comandos disponíveis:<br>- help<br>- ls<br>- cd <em>diretório</em><br>- cat <em>arquivo</em><br>- connect <em>URL</em><br>- minigame<br>- exit<br>- status<br>- scan<br>- clear</p>`;
+                } else if (command === "minigame") {
+                    openMinigame();
+                } else if (command === "ls") {
+                    consoleElement.innerHTML += `<p class="output">Diretórios:<br>${environment.directories.join('<br>')}</p>`;
+                } else if (command === "status") {
+                    consoleElement.innerHTML += `<p class="output">Status: Conectado: ${environment.connected ? "Sim" : "Não"}<br>Diretório atual: ${environment.currentDir}</p>`;
+                } else if (command.startsWith("connect")) {
+                    let url = command.split(" ")[1];
+                    if (url) {
+                        consoleElement.innerHTML += `<p class="output">Conectando-se a <strong>${url}</strong>...</p>`;
+                        environment.connected = true;
+                    } else {
+                        consoleElement.innerHTML += `<p class="error">URL não fornecida.</p>`;
+                    }
+                } else if (command.startsWith("cd")) {
+                    let dir = command.split(" ")[1];
+                    if (environment.directories.includes("/" + dir)) {
+                        environment.currentDir = "/" + dir;
+                        consoleElement.innerHTML += `<p class="output">Mudando para o diretório ${dir}...</p>`;
+                    } else {
+                        consoleElement.innerHTML += `<p class="error">Diretório não encontrado.</p>`;
+                    }
+                } else if (command.startsWith("cat")) {
+                    let file = command.split(" ")[1];
+                    let filesInDir = environment.files[environment.currentDir];
+                    if (filesInDir && filesInDir.includes(file)) {
+                        consoleElement.innerHTML += `<p class="output">Conteúdo do arquivo ${file}:<br>Conteúdo simulado do arquivo...</p>`;
+                    } else {
+                        consoleElement.innerHTML += `<p class="error">Arquivo não encontrado.</p>`;
+                    }
+                } else if (command === "scan") {
+                    consoleElement.innerHTML += `<p class="system">Iniciando a busca por links... Pesquisa realizada com sucesso!<br>Links encontrados: <a href="#">Link1</a>, <a href="#">Link2</a>, <a href="#">Link3</a></p>`;
+                } else if (command === "exit") {
+                    consoleElement.innerHTML += `<p class="output">Desconectando... Acesso finalizado.</p>`;
+                    setTimeout(() => {
+                        window.location.href = "https://www.google.com";
+                    }, 2000);
+                } else if (command === "clear") {
+                    consoleElement.innerHTML = '';
+                } else {
+                    consoleElement.innerHTML += `<p class="error">Comando não reconhecido. Digite 'help' para uma lista de comandos.</p>`;
+                }
+            }
+
+            function updateHistory() {
+                commandHistory.innerHTML = '';
+                environment.history.forEach(function(command) {
+                    let historyItem = document.createElement('span');
+                    historyItem.textContent = command;
+                    commandHistory.appendChild(historyItem);
+                });
+            }
+
+            function openMinigame() {
+                mainScreen.style.display = 'none';
+                minigameScreen.style.display = 'block';
+            }
+
+            submitPasswordButton.addEventListener("click", function() {
+                let enteredPassword = passwordInput.value.trim();
+
+                if (enteredPassword === "senha123") {
+                    gameMessage.textContent = "Senha correta! Acesso autorizado.";
+                    backToTerminalButton.style.display = 'inline-block';
+                } else {
+                    gameMessage.textContent = "Senha incorreta. Tente novamente.";
+                }
+            });
+
+            backToTerminalButton.addEventListener("click", function() {
+                minigameScreen.style.display = 'none';
+                mainScreen.style.display = 'block';
+            });
+        });
+    </script>
 </body>
 </html>
