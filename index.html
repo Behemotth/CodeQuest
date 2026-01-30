@@ -8,10 +8,11 @@
         /* CSS Interno */
         body {
             font-family: 'Courier New', Courier, monospace;
-            background-color: #1e1e1e;
-            color: white;
+            background-color: #111;
+            color: #00ff00;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
 
         #loadingScreen {
@@ -33,17 +34,53 @@
         #mainScreen {
             display: none;
             padding: 20px;
-            background-color: #333;
+            background-color: #222;
             min-height: 100vh;
+            position: relative;
         }
 
-        .fadeIn {
-            animation: fadeIn 1s ease-out;
+        /* Animação de 'caindo' como no estilo Matrix */
+        .matrix-effect {
+            font-size: 22px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            color: #00ff00;
+            pointer-events: none;
+            z-index: -1;
+            white-space: nowrap;
+            overflow: hidden;
+            opacity: 0.1;
+            animation: matrixFall 10s linear infinite;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        @keyframes matrixFall {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        .matrix-line {
+            display: inline-block;
+            opacity: 0.2;
+            animation: matrixCharacterFall 0.5s linear infinite;
+        }
+
+        @keyframes matrixCharacterFall {
+            0% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 0.2;
+            }
         }
 
         #console {
@@ -139,6 +176,49 @@
             padding: 5px;
             border-bottom: 1px dashed #444;
         }
+
+        /* Menu lateral */
+        #sideMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1;
+        }
+
+        #sideMenu a {
+            display: block;
+            color: #00ff00;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        #sideMenu a:hover {
+            color: #00c4cc;
+        }
+
+        #menuButton {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px;
+            background-color: #00c4cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        #menuButton:hover {
+            background-color: #009999;
+        }
     </style>
 </head>
 <body>
@@ -160,6 +240,16 @@
         <button id="backToTerminal" class="button">Voltar ao Terminal</button>
     </div>
 
+    <div id="sideMenu">
+        <h3>Menu de Informações</h3>
+        <a href="#" onclick="showInfo('system')">Sistema</a>
+        <a href="#" onclick="showInfo('diretorios')">Diretórios</a>
+        <a href="#" onclick="showInfo('arquivos')">Arquivos</a>
+        <a href="#" onclick="showInfo('conexao')">Conexão</a>
+    </div>
+
+    <button id="menuButton" onclick="toggleMenu()">Abrir Menu</button>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             let loadingScreen = document.getElementById("loadingScreen");
@@ -172,6 +262,10 @@
             let gameMessage = document.getElementById("gameMessage");
             let backToTerminalButton = document.getElementById("backToTerminal");
             let commandHistory = document.getElementById("commandHistory");
+            let sideMenu = document.getElementById("sideMenu");
+            let matrixEffect = document.createElement('div');
+            matrixEffect.classList.add('matrix-effect');
+            document.body.appendChild(matrixEffect);
 
             let environment = {
                 user: "guest",
@@ -295,6 +389,30 @@
                 minigameScreen.style.display = 'none';
                 mainScreen.style.display = 'block';
             });
+
+            // Menu de Informações
+            function toggleMenu() {
+                sideMenu.style.display = sideMenu.style.display === 'block' ? 'none' : 'block';
+            }
+
+            function showInfo(type) {
+                let info = '';
+                switch (type) {
+                    case 'system':
+                        info = 'Sistema: Deep Web Simulada. Conexões criptografadas, navegando em um ambiente seguro.';
+                        break;
+                    case 'diretorios':
+                        info = 'Diretórios:<br>/Tor - Arquivos relacionados à rede Tor.<br>/Hidden Services - Serviços secretos.<br>/Encrypted - Arquivos criptografados.';
+                        break;
+                    case 'arquivos':
+                        info = 'Arquivos:<br>intro.txt, links.md, service_list.txt, hidden.txt, data.bin, log.txt';
+                        break;
+                    case 'conexao':
+                        info = 'Status da Conexão: ' + (environment.connected ? 'Conectado' : 'Desconectado');
+                        break;
+                }
+                alert(info);
+            }
         });
     </script>
 </body>
