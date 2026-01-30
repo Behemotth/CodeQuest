@@ -1,4 +1,4 @@
-// Inicializando o AOS para animações de rolagem
+// Inicializar animações com AOS
 AOS.init();
 
 // Função para criar o gráfico de estatísticas
@@ -23,12 +23,12 @@ function createStatsChart() {
     new Chart(ctx, config);
 }
 
-// Carregar as notícias (Exemplo fictício de API)
+// Carregar as notícias
 function loadNews() {
     const newsList = document.getElementById('newsList');
     const newsData = [
-        { title: "Deep Web e a Privacidade Online", url: "#" },
-        { title: "Como o Tor garante o anonimato", url: "#" }
+        { title: "A nova era da Deep Web", url: "#" },
+        { title: "Segurança na Deep Web: Como se proteger", url: "#" },
     ];
 
     newsData.forEach(news => {
@@ -47,7 +47,7 @@ function createMap() {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Exemplo de pontos na Deep Web
+    // Adicionando marcadores
     L.marker([51.505, -0.09]).addTo(map)
         .bindPopup('DuckDuckGo - Pesquisa Privada')
         .openPopup();
