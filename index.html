@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Web - Guia Completo</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <img src="assets/images/logo.png" alt="Deep Web Logo" class="logo">
+            <h1>Explorando a Deep Web</h1>
+            <nav>
+                <ul>
+                    <li><a href="#introducao">Introdução</a></li>
+                    <li><a href="#o-que-e">O Que é</a></li>
+                    <li><a href="#acesso">Como Acessar</a></li>
+                    <li><a href="#riscos">Riscos & Segurança</a></li>
+                    <li><a href="#sites-populares">Sites Populares</a></li>
+                    <li><a href="#tecnologias">Tecnologias</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#mapa">Mapa</a></li>
+                    <li><a href="#noticias">Notícias</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Introdução -->
+    <section id="introducao" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Introdução à Deep Web</h2>
+            <p>A Deep Web é uma parte da internet que não é indexada pelos motores de busca convencionais, como Google, Bing, etc...</p>
+        </div>
+    </section>
+
+    <!-- O que é a Deep Web -->
+    <section id="o-que-e" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>O Que é a Deep Web?</h2>
+            <p>A Deep Web é composta por conteúdos como redes privadas, bancos de dados acadêmicos e muito mais...</p>
+            <p><strong>Diferença entre Deep Web e Dark Web:</strong> A Deep Web é geralmente composta por conteúdo legítimo...</p>
+        </div>
+    </section>
+
+    <!-- Como Acessar a Deep Web -->
+    <section id="acesso" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Como Acessar a Deep Web</h2>
+            <p>Para acessar a Deep Web, você precisará usar o navegador Tor...</p>
+            <ul>
+                <li><strong>Tor:</strong> O Tor é um navegador que permite o anonimato e a navegação na Deep Web.</li>
+                <li><strong>VPN:</strong> Usar uma VPN para maior segurança e anonimato.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Riscos e Segurança -->
+    <section id="riscos" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Riscos e Segurança</h2>
+            <p>A navegação na Deep Web pode ser perigosa se não forem tomadas as devidas precauções...</p>
+            <ul>
+                <li><strong>Malware:</strong> Sites maliciosos podem infectar seu dispositivo.</li>
+                <li><strong>Privacidade:</strong> É fundamental usar Tor e VPNs para proteger sua privacidade.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Sites Populares da Deep Web -->
+    <section id="sites-populares" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Sites Populares da Deep Web</h2>
+            <p>Veja alguns sites conhecidos que podem ser acessados na Deep Web:</p>
+            <ul>
+                <li><a href="http://3g2upl4pq6kufc4m.onion" target="_blank">DuckDuckGo - Pesquisa Privada</a></li>
+                <li><a href="http://facebookcorewwwi.onion" target="_blank">Facebook (Versão .onion)</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Tecnologias Usadas na Deep Web -->
+    <section id="tecnologias" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Tecnologias Usadas na Deep Web</h2>
+            <p>A Deep Web é suportada por tecnologias como:</p>
+            <ul>
+                <li><strong>Tor:</strong> Tor é a rede que permite o anonimato na navegação.</li>
+                <li><strong>Onion Routing:</strong> A técnica usada para esconder a identidade dos usuários.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Perguntas Frequentes (FAQ)</h2>
+            <div class="faq-item">
+                <h3>O que é a Deep Web?</h3>
+                <p>A Deep Web é uma parte da internet que não é acessada por motores de busca...</p>
+            </div>
+            <div class="faq-item">
+                <h3>Como posso acessar a Deep Web?</h3>
+                <p>Você pode acessar a Deep Web usando o navegador Tor, que garante anonimato...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa Interativo -->
+    <section id="mapa" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Mapa da Deep Web</h2>
+            <div id="map" style="height: 400px;"></div>
+        </div>
+    </section>
+
+    <!-- Notícias e Atualizações -->
+    <section id="noticias" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Últimas Notícias da Deep Web</h2>
+            <div id="newsList">
+                <!-- Notícias serão carregadas aqui -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gráfico de Estatísticas -->
+    <section id="estatisticas" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Estatísticas da Deep Web</h2>
+            <canvas id="deepWebStatsChart" width="400" height="200"></canvas>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Deep Web - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
