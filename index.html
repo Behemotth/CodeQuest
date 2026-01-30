@@ -3,146 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Web - Guia Completo e Profissional</title>
+    <meta name="description" content="Plataforma Hacker - Deep Web">
+    <meta name="author" content="Seu Nome">
+    <meta name="keywords" content="Deep Web, Hacker, Tor, Anonimato, Privacidade">
+    <title>Plataforma Hacker - Deep Web</title>
     <link rel="stylesheet" href="assets/styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 </head>
 <body>
 
-    <!-- Cabeçalho -->
-    <header>
-        <div class="container">
-            <img src="assets/images/logo.png" alt="Deep Web Logo" class="logo">
-            <h1>Explorando a Deep Web</h1>
-            <nav>
-                <ul>
-                    <li><a href="#introducao">Introdução</a></li>
-                    <li><a href="#o-que-e">O que é a Deep Web</a></li>
-                    <li><a href="#acesso">Como Acessar</a></li>
-                    <li><a href="#riscos">Riscos & Segurança</a></li>
-                    <li><a href="#sites-populares">Sites Populares</a></li>
-                    <li><a href="#tecnologias">Tecnologias</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#noticias">Notícias</a></li>
-                    <li><a href="#estatisticas">Estatísticas</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- Tela de Carregamento -->
+    <div id="loadingScreen" class="loading-screen">
+        <h1>Conectando-se à Deep Web...</h1>
+        <p id="loadingText">Iniciando protocolo de acesso...</p>
+        <div class="loading-bar"></div>
+    </div>
 
-    <!-- Introdução -->
-    <section id="introducao" class="section" data-aos="fade-up">
-        <div class="container">
-            <h2>O Que é a Deep Web?</h2>
-            <p>A **Deep Web** é a parte da internet que não pode ser acessada através dos motores de busca convencionais. Ela engloba um vasto número de conteúdos não indexados, incluindo informações privadas e bancos de dados acadêmicos...</p>
-        </div>
-    </section>
-
-    <!-- O que é a Deep Web -->
-    <section id="o-que-e" class="section" data-aos="fade-up">
-        <div class="container">
-            <h2>O Que é a Deep Web?</h2>
-            <p>A Deep Web é composta por conteúdos como:</p>
-            <ul>
-                <li><strong>Redes privadas:</strong> Websites de universidades, redes corporativas privadas, etc.</li>
-                <li><strong>Banco de dados:</strong> Arquivos e informações de acessos restritos.</li>
-                <li><strong>Arquivos ocultos:</strong> Conteúdos que não são visíveis a motores de busca convencionais.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Como Acessar a Deep Web -->
-    <section id="acesso" class="section" data-aos="fade-up">
-        <div class="container">
-            <h2>Como Acessar a Deep Web</h2>
-            <p>Para acessar a Deep Web, é necessário utilizar ferramentas que garantem a privacidade e anonimato:</p>
-            <ul>
-                <li><strong>Tor Browser:</strong> Ferramenta mais popular, garantindo navegação anônima.</li>
-                <li><strong>VPN:</strong> Uma VPN pode ser usada em conjunto com o Tor para maior segurança e privacidade.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Riscos e Segurança -->
-    <section id="riscos" class="section" data-aos="fade-up">
-        <div class="container">
-            <h2>Riscos e Segurança</h2>
-            <p>A Deep Web é repleta de **riscos** devido à natureza de seu conteúdo. Entre os principais riscos, destacam-se:</p>
-            <ul>
-                <li><strong>Malware:</strong> Programas maliciosos que podem comprometer o seu dispositivo.</li>
-                <li><strong>Phishing:</strong> Tentativas de roubo de dados pessoais através de sites falsos.</li>
-                <li><strong>Conteúdo Ilegal:</strong> Acesso a conteúdos proibidos e ilegais.</li>
-            </ul>
-            <p>É fundamental tomar precauções como o uso de **VPNs** e navegar apenas em sites confiáveis.</p>
-        </div>
-    </section>
-
-    <!-- Sites Populares da Deep Web -->
-    <section id="sites-populares" class="section" data-aos="fade-up">
-        <div class="container">
-            <h2>Sites Populares na Deep Web</h2>
-            <p>Embora a Deep Web seja muitas vezes associada ao lado obscuro da internet, ela também possui diversos sites úteis e legítimos:</p>
-            <ul>
-                <li><a href="http://3g2upl4pq6kufc4m.onion" target="_blank">DuckDuckGo (Pesquisa Privada)</a></li>
-                <li><a href="http://facebookcorewwwi.onion" target="_blank">Facebook (Versão .onion)</a></li>
-                <li><a href="http://www.cryptome.org/" target="_blank">Cryptome (Arquivos de documentos públicos)</a></li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Tecnologias Usadas na Deep Web -->
-    <section id="tecnologias" class="section" data-aos="fade-up">
-        <div class="container">
-            <h2>Tecnologias Usadas na Deep Web</h2>
-            <p>A Deep Web depende de várias tecnologias para garantir anonimato e segurança:</p>
-            <ul>
-                <li><strong>Tor:</strong> O Tor é a rede que permite navegação anônima, ocultando a identidade do usuário.</li>
-                <li><strong>Onion Routing:</strong> Técnica que envia as comunicações por múltiplos nós de criptografia.</li>
-                <li><strong>Cryptocurrencies:</strong> Bitcoin e outras criptomoedas são frequentemente usadas na Deep Web para garantir transações anônimas.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="section" data-aos="fade-up">
-        <div class="container">
-            <h2>Perguntas Frequentes (FAQ)</h2>
-            <div class="faq-item">
-                <h3>É legal acessar a Deep Web?</h3>
-                <p>Sim, acessar a Deep Web não é ilegal, desde que você não esteja acessando ou participando de atividades ilícitas.</p>
+    <!-- Tela Hacker -->
+    <div id="mainScreen" class="main-screen">
+        <div class="terminal">
+            <div class="header">
+                <h2>Plataforma Hacker</h2>
             </div>
-            <div class="faq-item">
-                <h3>Como posso me proteger na Deep Web?</h3>
-                <p>Use **VPNs**, **Tor Browser** e nunca compartilhe informações pessoais ou bancárias.</p>
+
+            <div class="terminal-content">
+                <div id="console" class="console"></div>
+                <input id="userInput" type="text" placeholder="Digite um comando..." autofocus>
             </div>
         </div>
-    </section>
 
-    <!-- Estatísticas da Deep Web -->
-    <section id="estatisticas" class="section" data-aos="fade-up">
-        <div class="container">
-            <h2>Estatísticas da Deep Web</h2>
-            <canvas id="deepWebStatsChart" width="400" height="200"></canvas>
-        </div>
-    </section>
+        <!-- Navegação -->
+        <nav>
+            <ul>
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#o-que-e">O que é a Deep Web?</a></li>
+                <li><a href="#minigame" id="minigameLink">Minigame</a></li>
+                <li><a href="#riscos">Riscos e Segurança</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
 
-    <!-- Notícias e Atualizações -->
-    <section id="noticias" class="section" data-aos="fade-up">
-        <div class="container">
-            <h2>Últimas Notícias sobre a Deep Web</h2>
-            <div id="newsList">
-                <!-- Notícias serão carregadas dinamicamente aqui -->
-            </div>
-        </div>
-    </section>
+        <footer>
+            <p>&copy; 2026 Deep Web Hacker Platform | Todos os direitos reservados.</p>
+        </footer>
+    </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Deep Web - Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <!-- Minigame -->
+    <div id="minigameScreen" class="minigame-screen" style="display:none;">
+        <h2>Minigame: Cracke a Senha</h2>
+        <p>Seu objetivo é adivinhar a senha secreta do sistema para avançar. Tente agora!</p>
+        <input type="text" id="passwordInput" placeholder="Digite a senha">
+        <button id="submitPassword">Submeter</button>
+        <p id="gameMessage"></p>
+        <button id="backToTerminal" style="display:none;">Voltar ao Terminal</button>
+    </div>
 
-    <script src="js/script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
