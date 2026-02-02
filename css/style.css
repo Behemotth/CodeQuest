@@ -16,8 +16,8 @@ nav {
   display: flex;
   justify-content: center;
   gap: 10px;
-  background: #020617;
-  padding: 10px;
+  background: #f2ff04;
+  padding: 11px;
 }
 
 nav button {
@@ -26,8 +26,6 @@ nav button {
   border: 1px solid var(--primary);
   padding: 8px 16px;
   cursor: pointer;
-  link:hover { color:orange;}
-
 }
 
 section {
